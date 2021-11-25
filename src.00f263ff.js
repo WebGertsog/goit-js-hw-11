@@ -69,4 +69,4 @@ var t,e=arguments[3];!function(e,i){"function"==typeof t&&t.amd?t([],function(){
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var e=s(require("axios")),r=require("notiflix");function s(e){return e&&e.__esModule?e:{default:e}}
 },{"./sass/main.scss":"clu1","axios":"dZBD","notiflix":"hWOm"}]},{},["Focm"], null)
-//# sourceMappingURL=/parcel-project-template/src.4efa9de2.js.map
+//# sourceMappingURL=/goit-js-hw-11/src.00f263ff.js.map
