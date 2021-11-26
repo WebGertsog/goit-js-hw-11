@@ -1,6 +1,8 @@
 import './sass/main.scss';
 import {axiosGet} from './js/pixabay_api';
 import {Notify} from 'notiflix';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const refs = {
   searchForm: document.querySelector('#search-form'),
@@ -8,7 +10,7 @@ const refs = {
   gallery: document.querySelector('.gallery'),
   loadMoreBtn: document.querySelector('.load-more'),
 };
-
+let lightbox = new SimpleLightbox('.gallery a');
 let pageNum = 1;
 let totalHits = 0;
 let perPage = 100;
@@ -20,6 +22,7 @@ refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
 async function pushTheButton(e){
   e.preventDefault();
+  refs.loadMoreBtn.classList.add('is-hidden');
   refs.gallery.innerHTML = '';
 
   const value = refs.input.value;
@@ -36,15 +39,17 @@ async function pushTheButton(e){
     Notify.failure('Sorry, there are no images matching your search query. Please try again.');
     return;
   }
-  
+
+  Notify.info(`Hooray! We found ${totalHits} images.`);
 
   renderMarkup(dataResult);
   refs.loadMoreBtn.classList.remove('is-hidden');
 };
 
 function renderMarkup(e) {
-
+  lightbox.refresh();
   return refs.gallery.insertAdjacentHTML('beforeend', createMarkup(e.data.hits));
+  
   
 }
 
@@ -80,15 +85,18 @@ function createMarkup(e){
 };
 
 async function onLoadMore(){
-
+  const dataResult = await axiosGet(refs.input.value, pageNum, perPage);
+  renderMarkup(dataResult);
+  pageNum += 1;
+ 
   const totalPage = totalHits / perPage;
+  console.log(pageNum);
 
-  if (totalPage < pageNum) {
+  if (pageNum > totalPage) {
     refs.loadMoreBtn.classList.add('is-hidden');
     Notify.info("We're sorry, but you've reached the end of search results.");
     return;
   }
-    pageNum += 1;
-    const dataResult = await axiosGet(refs.input.value, pageNum, perPage);
-    renderMarkup(dataResult);
+    
+ 
 };
