@@ -12,18 +12,17 @@ refs.searchForm.addEventListener('submit', pushTheButton);
 
 async function pushTheButton(e){
   e.preventDefault();
-
   refs.gallery.innerHTML = '';
 
   const value = refs.input.value;
-  let dataResult = await axiosGet(refs.input.value);
-  
+
   if (value === '') {
-    console.log(dataResult.data.hits.length);
     return;
   }
-  
-  if (dataResult.data.hits.length === 0) {
+
+  const dataResult = await axiosGet(refs.input.value);
+
+  if (dataResult.data.hits === 0) {
     Notify.failure('Sorry, there are no images matching your search query. Please try again.');
     return;
   }
