@@ -16,7 +16,7 @@ ol {
   list-style: none;
 }
 
-.link {
+a {
   text-decoration: none;
 }
 
@@ -70,18 +70,41 @@ img {
 .gallery {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .photo-card {
   display: flex;
   flex-direction: row;
-  margin: 20px 10px 10px 20px;
+  margin-top: 30px;
 }
 
+.photo-card:not(:last-child) {
+  margin-right: 25px;
+}
 .photo-card__link {
-  width: 270 px;
+  width: 250 px;
 }
 
 .photo-card__img {
-  width: 270px;
-  height: 170px;
+  width: 250px;
+  height: 150px;
+}
+
+.load-more {
+  display: block;
+  margin: 30px auto 50px auto;
+  color: #fff;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 212, 255, 1) 0%,
+    rgba(9, 38, 121, 1) 45%,
+    rgba(2, 0, 36, 1) 100%
+  );
+  border-radius: 5px;
+}
+
+.is-hidden {
+  display: none;
 }
