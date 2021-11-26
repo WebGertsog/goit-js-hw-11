@@ -13,8 +13,7 @@ const refs = {
 let lightbox = new SimpleLightbox('.gallery a');
 let pageNum = 1;
 let totalHits = 0;
-let perPage = 100;
-
+let perPage = 40;
 
 refs.loadMoreBtn.classList.add('is-hidden');
 refs.searchForm.addEventListener('submit', pushTheButton);
@@ -47,10 +46,8 @@ async function pushTheButton(e){
 };
 
 function renderMarkup(e) {
+  refs.gallery.insertAdjacentHTML('beforeend', createMarkup(e.data.hits));
   lightbox.refresh();
-  return refs.gallery.insertAdjacentHTML('beforeend', createMarkup(e.data.hits));
-  
-  
 }
 
 function createMarkup(e){
@@ -61,19 +58,19 @@ function createMarkup(e){
     <img class="photo-card__img" src="${webformatURL}" alt="${tags}" loading="lazy" />
     <div class="info">
       <p class="info-item">
-        <b>Likes</b>
+        <b class="info-item__b">Likes</b>
         <span>${likes}</span>
       </p>
       <p class="info-item">
-        <b>Views</b>
-        <span${views}</span>
+        <b class="info-item__b">Views</b>
+        <span>${views}</span>
       </p>
       <p class="info-item">
-        <b>Comments</b>
+        <b class="info-item__b">Comments</b>
         <span>${comments}</span>
       </p>
       <p class="info-item">
-        <b>Downloads</b>
+        <b class="info-item__b">Downloads</b>
         <span>${downloads}</span>
       </p>
     </div>
@@ -90,13 +87,10 @@ async function onLoadMore(){
   pageNum += 1;
  
   const totalPage = totalHits / perPage;
-  console.log(pageNum);
 
   if (pageNum > totalPage) {
     refs.loadMoreBtn.classList.add('is-hidden');
     Notify.info("We're sorry, but you've reached the end of search results.");
     return;
   }
-    
- 
 };
