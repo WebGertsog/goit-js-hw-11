@@ -14,8 +14,11 @@ img {
 }
 
 .search {
+  position: fixed;
   display: flex;
   align-items: center;
+  width: 100%;
+  z-index: 1000;
   background: linear-gradient(
     90deg,
     rgba(2, 0, 36, 1) 0%,
@@ -70,6 +73,7 @@ img {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  padding-top: 50px;
   margin-bottom: 30px;
 }
 
