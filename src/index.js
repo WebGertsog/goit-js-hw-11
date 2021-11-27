@@ -10,8 +10,9 @@ const refs = {
   gallery: document.querySelector('.gallery'),
   loadMoreBtn: document.querySelector('.load-more'),
 };
+
 let lightbox = new SimpleLightbox('.gallery a');
-let pageNum = 1;
+let pageNum = 0;
 let totalHits = 0;
 let perPage = 40;
 
@@ -21,6 +22,7 @@ refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
 async function pushTheButton(e){
   e.preventDefault();
+  pageNum = 1;
   refs.loadMoreBtn.classList.add('is-hidden');
   refs.gallery.innerHTML = '';
 
@@ -47,6 +49,7 @@ async function pushTheButton(e){
 
 function renderMarkup(e) {
   refs.gallery.insertAdjacentHTML('beforeend', createMarkup(e.data.hits));
+  pageNum += 1;
   lightbox.refresh();
 }
 
@@ -84,7 +87,7 @@ function createMarkup(e){
 async function onLoadMore(){
   const dataResult = await axiosGet(refs.input.value, pageNum, perPage);
   renderMarkup(dataResult);
-  pageNum += 1;
+ 
  
   const totalPage = totalHits / perPage;
 

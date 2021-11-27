@@ -3,19 +3,6 @@ b {
   margin-bottom: 0;
 }
 
-ul,
-ol {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 0;
-}
-
-.list {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
 a {
   text-decoration: none;
 }
@@ -36,10 +23,12 @@ img {
     rgba(0, 212, 255, 1) 100%
   );
 }
+
 .search-form {
   position: relative;
   margin: 10px auto 10px auto;
 }
+
 .search-input {
   padding-left: 10px;
   width: 300px;
@@ -48,9 +37,11 @@ img {
   border-style: none;
   outline: none;
 }
+
 .search-input:focus {
   box-shadow: 0 0 0 1px #ccc, 0 0 0 1px #888, 0 0 0 2px #056eb4, 0 0 0 3px #1900ffd3;
 }
+
 .submit-button {
   position: absolute;
   top: 0;
@@ -62,66 +53,74 @@ img {
   cursor: pointer;
   transition: all 200ms ease-out;
 }
+
 .submit-button:hover {
   fill: #efefef;
   background-color: #000;
 }
+
 .button-svg {
   position: absolute;
   top: 50%;
   right: 32%;
   transform: translate(0, -50%);
 }
+
 .gallery {
   display: flex;
+  justify-content: space-evenly;
   flex-wrap: wrap;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 30px;
 }
+
 .photo-card {
   display: flex;
   flex-direction: row;
   margin-top: 30px;
   transition: all 300ms ease-out;
 }
+
 .photo-card:hover {
   transform: scale(1.07);
 }
-.photo-card:not(:last-child) {
-  margin-right: 25px;
-}
+
 .photo-card__link {
-  width: 250 px;
+  width: 350px;
   border-radius: 0 0 5px 5px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
     0px 2px 1px -1px rgba(0, 0, 0, 0.12);
 }
 
 .photo-card__img {
-  width: 325px;
+  width: 350px;
   height: 200px;
 }
+
 .info {
   display: flex;
   justify-content: space-around;
   color: #000633 !important;
   font-size: 16px;
+  border-top: 1px solid #efefef;
 }
+
 span {
   font-size: 13px;
 }
+
 .info-item {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .info-item__b {
   margin-bottom: 5px;
 }
+
 .load-more {
   display: block;
-  margin: 30px auto 40px auto;
+  margin: 0 auto 40px auto;
   padding: 5px 15px 5px 15px;
   color: #fff;
   background: linear-gradient(
@@ -138,6 +137,7 @@ span {
 .load-more:hover {
   transform: scale(1.07);
 }
+
 .is-hidden {
   display: none;
 }
